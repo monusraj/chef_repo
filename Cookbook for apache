@@ -1,0 +1,136 @@
+Installing Chef Development Kit on Workstation!
+
+curl -s https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdkcurl -s https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdk
+
+
+========================================================== Create Cookbook for installing apache on Node==================================
+
+[root@ cookbooks]# chef generate cookbook apache
++---------------------------------------------+
+            Chef License Acceptance
+
+[root@ .chef]# cd ..
+[root@ chef-repo]# cd cookbooks/
+[root@ cookbooks]# ls -lrt
+total 4
+drwxr-xr-x. 6 root root  88 Jun  2 03:28 starter
+-rw-r--r--. 1 root root 588 Jun  2 03:28 chefignore
+[root@ cookbooks]# chef generate cookbook apache
++---------------------------------------------+
+            Chef License Acceptance
+
+Before you can continue, 1 product license
+must be accepted. View the license at
+https://www.chef.io/end-user-license-agreement/
+
+License that need accepting:
+  * Chef Development Kit
+
+Do you accept the 1 product license (yes/no)?
+
+> yes
+
+Persisting 1 product license...
+✔ 1 product license persisted.
+
++---------------------------------------------+
+Generating cookbook apache
+- Ensuring correct cookbook content
+
+Your cookbook is ready. Type `cd apache` to enter it.
+
+There are several commands you can run to get started locally developing and testing your cookbook.
+Type `delivery local --help` to see a full list of local testing commands.
+
+Why not start by writing an InSpec test? Tests for the default recipe are stored at:
+
+test/integration/default/default_test.rb
+
+If you'd prefer to dive right in, the default recipe can be found at:
+
+recipes/default.rb
+
+[root@ cookbooks]#
+[root@ cookbooks]# ls -lrt
+total 4
+drwxr-xr-x. 6 root root  88 Jun  2 03:28 starter
+-rw-r--r--. 1 root root 588 Jun  2 03:28 chefignore
+drwxr-xr-x. 6 root root 191 Jun  2 04:40 apache
+[root@ cookbooks]# cd apache/
+[root@ apache]# ls
+CHANGELOG.md  chefignore  kitchen.yml  LICENSE  metadata.rb  Policyfile.rb  README.md  recipes  spec  test
+[root@ apache]#
+[root@ apache]# cd recipes/
+[root@ recipes]# ls -lrt
+total 4
+-rw-r--r--. 1 root root 97 Jun  2 04:40 default.rb
+[root@ recipes]# vi default.rb
+[root@ recipes]# cat default.rb
+#
+# Cookbook:: apache
+# Recipe:: default
+#
+# Copyright:: 2019, The Authors, All Rights Reserved.
+
+package "httpd" do
+  action :install
+end
+service "httpd" do
+  action [ :enable, :start ]
+end
+cookbook_file "/var/www/html/index.html" do
+  source "index.html"
+  mode "0644"
+end
+
+[root@ apache]# mkdir -p files/default
+[root@ apache]# cd files/default/
+[root@ default]# vi index.html
+[root@ default]# cat index.html
+<html>
+<body>
+ <h1>Hello, world!</h1>
+</body>
+</html>
+[root@ default]#
+
+[root@ cookbooks]# pwd
+/opt/chef-repo/cookbooks
+[root@ip-172-31-42-163 cookbooks]# knife cookbook upload apache
+/opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/knife/bootstrap.rb:31: warning: already initialized constant Chef::Knife::Bootstrap::SUPPORTED_CONNECTION_PROTOCOLS
+/opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/knife/bootstrap.rb:31: warning: previous definition of SUPPORTED_CONNECTION_PROTOCOLS was here
+/opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/knife/bootstrap.rb:32: warning: already initialized constant Chef::Knife::Bootstrap::WINRM_AUTH_PROTOCOL_LIST
+/opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/knife/bootstrap.rb:32: warning: previous definition of WINRM_AUTH_PROTOCOL_LIST was here
+/opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/knife/bootstrap.rb:350: warning: already initialized constant Chef::Knife::Bootstrap::DEPRECATED_FLAGS
+/opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/knife/bootstrap.rb:350: warning: previous definition of DEPRECATED_FLAGS was here
+Uploading apache       [0.1.0]
+Uploaded 1 cookbook.
+
+
+-------------------------on chef clinet----------------------
+
+
+[root@ cache]# setenforce 0
+[root@ cache]#
+
+[root@ cache]# chef-client
+Starting Chef Infra Client, version 15.0.300
+resolving cookbooks for run list: ["apache"]
+Synchronizing Cookbooks:
+  - apache (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 3 resources
+Recipe: apache::default
+  * yum_package[httpd] action install (up to date)
+  * service[httpd] action enable (up to date)
+  * service[httpd] action start (up to date)
+  * cookbook_file[/var/www/html/index.html] action create (up to date)
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 0/4 resources updated in 03 seconds
+
+
+
+
