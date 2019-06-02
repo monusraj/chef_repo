@@ -1,3 +1,6 @@
+PAGE 157 of Chef-NEW PDF
+
+
 From 1st VM (chef workstation):
 
 [root@.chef]# knife bootstrap <internal IP of clinet(2nd VM)> --sudo -U root -P <password> -N "node1"
