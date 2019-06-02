@@ -1,0 +1,211 @@
+From 1st VM (chef workstation):
+
+[root@.chef]# knife bootstrap <internal IP of clinet(2nd VM)> --sudo -U root -P <password> -N "node1"
+
+[root@ .chef]# knife bootstrap (internal IP of client) --sudo -U root -P <password> -N "node1"
++---------------------------------------------+
+            Chef License Acceptance
+
+Before you can continue, 2 product licenses
+must be accepted. View the license at
+https://www.chef.io/end-user-license-agreement/
+
+Licenses that need accepting:
+  * Chef Infra Client
+  * Chef InSpec
+
+Do you accept the 2 product licenses (yes/no)?
+
+> yes
+
+Persisting 2 product licenses...
+✔ 2 product licenses persisted.
+
++---------------------------------------------+
+Creating new client for node1
+Creating new node for node1
+Connecting to <node1 IP>
+
+Are you sure you want to continue connecting
+? (Y/N) Y
+WARN: [SSH] PTY requested: stderr will be merged into stdout
+Bootstrapping <internal IP>
+ [172.31.39.234] -----> Installing Chef Omnibus (stable/15)
+downloading https://omnitruck.chef.io/chef/install.sh
+  to file /tmp/install.sh.1633/install.sh
+trying curl...
+ [private ip] el 7 x86_64
+Getting information for chef stable 15 for el...
+downloading https://omnitruck.chef.io/stable/chef/metadata?v=15&p=el&pv=7&m=x86_64
+  to file /tmp/install.sh.1639/metadata.txt
+ trying curl...
+ sha1   bcb835748819813842b664d7bdb1cf509eb71c09
+sha256  85365d0a4c68a3445743d18e70055d762648bf673fc95f1e0e17194701f64d5f
+url     https://packages.chef.io/files/stable/chef/15.0.300/el/7/chef-15.0.300-1.el7.x86_64.rpm
+version 15.0.300
+ downloaded metadata file looks valid...
+ downloading https://packages.chef.io/files/stable/chef/15.0.300/el/7/chef-15.0.300-1.el7.x86_64.rpm
+  to file /tmp/install.sh.1639/chef-15.0.300-1.el7.x86_64.rpm
+  trying curl...
+  Comparing checksum with sha256sum...
+  Installing chef 15
+irpm...
+  warning: /tmp/install.sh.1639/chef-15.0.300-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+  Preparing...
+  ################################# [100%]
+  Updating / installing...
+ 00-1.el7
+                                    (  2%)
+  #                                 (  4%)
+  ##                                (  7%)
+  ###                               ( 10%)
+  ####                              ( 13%)
+  #####                             ( 16%)
+  ######                            ( 19%)
+  #######                           ( 22%)
+  ########                          ( 25%)
+  #########                         ( 28%)
+  ##########                        ( 31%)
+  ###########                       ( 34%)
+  ############                      ( 37%)
+  #############                     ( 40%)
+  ##############                    ( 43%)
+  ###############                   ( 46%)
+  ################                  ( 49%)
+  #################                 ( 52%)
+  ##################                ( 54%)
+  ###################               ( 57%)
+  ####################              ( 60%)
+  #####################             ( 63%)
+  ######################            ( 66%)
+  #######################           ( 69%)
+  ########################          ( 72%)
+  #########################         ( 75%)
+  ##########################        ( 78%)
+  ###########################       ( 81%)
+  ############################      ( 84%)
+  #############################     ( 87%)
+  ##############################    ( 90%)
+  ###############################   ( 93%)
+  ################################  ( 96%)
+  ################################# [100%]
+  Thank you for installing Chef Infra Client! For help getting started visit https://learn.chef.io
+  Starting the first Chef Infra Client Client run...
+  +---------------------------------------------+
+✔ 2 product licenses accepted.
++---------------------------------------------+
+Starting Chef Infra Client, version 15.0.300
+resolving cookbooks for run list: []
+Synchronizing Cookbooks:
+Installing Cookbook Gems:
+Compiling Cookbooks...
+[2019-06-02T04:24:01+00:00] WARN: Node node1 has an empty run list.
+  Converging 0 resources
+ 
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 0/0 resources updated in 02 seconds
+
+[root@ .chef]# knife bootstrap (internal IP of client) --sudo -U root -P <password> -N "node1"
++---------------------------------------------+
+            Chef License Acceptance
+
+Before you can continue, 2 product licenses
+must be accepted. View the license at
+https://www.chef.io/end-user-license-agreement/
+
+Licenses that need accepting:
+  * Chef Infra Client
+  * Chef InSpec
+
+Do you accept the 2 product licenses (yes/no)?
+
+> yes
+
+Persisting 2 product licenses...
+✔ 2 product licenses persisted.
+
++---------------------------------------------+
+Creating new client for node1
+Creating new node for node1
+Connecting to <node1 IP>
+
+Are you sure you want to continue connecting
+? (Y/N) Y
+WARN: [SSH] PTY requested: stderr will be merged into stdout
+Bootstrapping <internal IP>
+ [172.31.39.234] -----> Installing Chef Omnibus (stable/15)
+downloading https://omnitruck.chef.io/chef/install.sh
+  to file /tmp/install.sh.1633/install.sh
+trying curl...
+ [private ip] el 7 x86_64
+Getting information for chef stable 15 for el...
+downloading https://omnitruck.chef.io/stable/chef/metadata?v=15&p=el&pv=7&m=x86_64
+  to file /tmp/install.sh.1639/metadata.txt
+ trying curl...
+ sha1   bcb835748819813842b664d7bdb1cf509eb71c09
+sha256  85365d0a4c68a3445743d18e70055d762648bf673fc95f1e0e17194701f64d5f
+url     https://packages.chef.io/files/stable/chef/15.0.300/el/7/chef-15.0.300-1.el7.x86_64.rpm
+version 15.0.300
+ downloaded metadata file looks valid...
+ downloading https://packages.chef.io/files/stable/chef/15.0.300/el/7/chef-15.0.300-1.el7.x86_64.rpm
+  to file /tmp/install.sh.1639/chef-15.0.300-1.el7.x86_64.rpm
+  trying curl...
+  Comparing checksum with sha256sum...
+  Installing chef 15
+irpm...
+  warning: /tmp/install.sh.1639/chef-15.0.300-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+  Preparing...
+  ################################# [100%]
+  Updating / installing...
+ 00-1.el7
+                                    (  2%)
+  #                                 (  4%)
+  ##                                (  7%)
+  ###                               ( 10%)
+  ####                              ( 13%)
+  #####                             ( 16%)
+  ######                            ( 19%)
+  #######                           ( 22%)
+  ########                          ( 25%)
+  #########                         ( 28%)
+  ##########                        ( 31%)
+  ###########                       ( 34%)
+  ############                      ( 37%)
+  #############                     ( 40%)
+  ##############                    ( 43%)
+  ###############                   ( 46%)
+  ################                  ( 49%)
+  #################                 ( 52%)
+  ##################                ( 54%)
+  ###################               ( 57%)
+  ####################              ( 60%)
+  #####################             ( 63%)
+  ######################            ( 66%)
+  #######################           ( 69%)
+  ########################          ( 72%)
+  #########################         ( 75%)
+  ##########################        ( 78%)
+  ###########################       ( 81%)
+  ############################      ( 84%)
+  #############################     ( 87%)
+  ##############################    ( 90%)
+  ###############################   ( 93%)
+  ################################  ( 96%)
+  ################################# [100%]
+  Thank you for installing Chef Infra Client! For help getting started visit https://learn.chef.io
+  Starting the first Chef Infra Client Client run...
+  +---------------------------------------------+
+✔ 2 product licenses accepted.
++---------------------------------------------+
+Starting Chef Infra Client, version 15.0.300
+resolving cookbooks for run list: []
+Synchronizing Cookbooks:
+Installing Cookbook Gems:
+Compiling Cookbooks...
+[2019-06-02T04:24:01+00:00] WARN: Node node1 has an empty run list.
+  Converging 0 resources
+ 
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 0/0 resources updated in 02 seconds
