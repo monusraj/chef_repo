@@ -1,0 +1,23 @@
+Create two RHEL7 Vms
+
+On 1st VM
+1) Create account on https://manage.chef.io
+2) Download chef-starter.zip
+3) Put chef-starter.zip in 1st VM
+4) cd chef-repo/
+5)  curl -L http://www.chef.io/chef/install.sh | sudo bash
+
+
+
+on 2nd Machine,
+
+1) 
+PasswordAuthentication yes
+#PasswordAuthentication no
+PermitRootLogin yes
+systemctl restart sshd
+
+2) change root password
+
+
+On 1st VM:  Login from M1 to M2 using ssh root@PrivateIPAddressofM2
