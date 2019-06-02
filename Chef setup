@@ -1,4 +1,4 @@
-Create two RHEL7 Vms
+Create two RHEL7 VMs
 
 On 1st VM
 1) Create account on https://manage.chef.io
@@ -21,3 +21,17 @@ systemctl restart sshd
 
 
 On 1st VM:  Login from M1 to M2 using ssh root@PrivateIPAddressofM2
+
+=============================================================================
+[root@.chef]# pwd
+/opt/chef-repo/.chef
+[root@ .chef]# ls -lrt
+total 8
+-rw-r--r--. 1 root root 1674 Jun  2 03:28 monusraj.pem
+-rw-r--r--. 1 root root  418 Jun  2 03:28 knife.rb
+[root@ .chef]#
+
+
+[root@ .chef]# knife client list
+monu_raj-validator
+[root@ .chef]#
